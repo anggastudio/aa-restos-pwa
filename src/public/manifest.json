@@ -1,11 +1,11 @@
 {
-  "name": "Movie Catalogue Lite",
-  "short_name": "Movie Lite",
-  "description": "Free Catalogue Movie for you",
+  "name": "AA Restos",
+  "short_name": "aarestos",
+  "description": "aa angga's restaurant logbook. Served just for you!",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#d84315",
+  "theme_color": "#1e5de6",
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
