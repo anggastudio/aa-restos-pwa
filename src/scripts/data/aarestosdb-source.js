@@ -14,17 +14,12 @@ class AaRestoDbSource {
   }
 
   static async addReview(data) {
-    const response = await fetch(API_ENDPOINT.ADD_REVIEW(), {
+    const response = await fetch(API_ENDPOINT.ADD_REVIEW, {
       method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
         'X-Auth-Token': '12345',
       },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
       body: JSON.stringify(data),
     });
     const responseJson = await response.json();

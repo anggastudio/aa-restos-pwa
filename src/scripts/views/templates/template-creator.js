@@ -71,7 +71,7 @@ function createReviewTemplate(reviews) {
     <div class="m-1">
       <h1 class="resto-title mt-1">Customer Reviews</h1>
     </div>
-    <div class="flex-row wrap">
+    <div id="reviews" class="flex-row wrap">
       ${templateItem}
     </div>
     <div class="m-1">
@@ -79,11 +79,11 @@ function createReviewTemplate(reviews) {
     </div>
     <div class="review-container w-full">
       <article class="review-form-container w-full">
-        <form action="/" class="review-form">
+        <form action="/" class="review-form" onsubmit="event.preventDefault();">
           <div class="form-inner">
-            <input type="text" placeholder="Name">
-            <textarea placeholder="Your review..." rows="5"></textarea>
-            <button type="submit" href="/">Submit</button>
+            <input id="review-name" type="text" placeholder="Name">
+            <textarea id="review-content" placeholder="Your review..." rows="5"></textarea>
+            <button type="submit" id="submit-review">Submit</button>
           </div>
         </form>
       </article>
@@ -176,4 +176,5 @@ export {
   createRestoDetailTemplate,
   createFavoriteButtonTemplate,
   createFavoritedButtonTemplate,
+  createReviewItemTemplate,
 };

@@ -1,11 +1,39 @@
 import UrlParser from '../../routes/url-parser';
 import AaRestoDbSource from '../../data/aarestosdb-source';
-import { createRestoDetailTemplate } from '../templates/template-creator';
+import { createRestoDetailTemplate, createReviewItemTemplate } from '../templates/template-creator';
 import StarsCounter from '../../utils/stars-counter';
 import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
 
-function setupReviewEvent() {
-  console.log('');
+function processReviewResponse(response) {
+  if (response && response.customerReviews) {
+    let reviewsTemplate = '';
+    response.customerReviews.forEach((review) => {
+      reviewsTemplate += createReviewItemTemplate(review);
+    });
+    const reviewsContainer = document.querySelector('#reviews');
+    reviewsContainer.innerHTML = reviewsTemplate;
+  } else {
+    console.log('error add review');
+  }
+}
+
+async function submitTheReview(id) {
+  const inputName = document.querySelector('#review-name');
+  const inputReview = document.querySelector('#review-content');
+  const name = inputName.value;
+  const review = inputReview.value;
+  const data = {
+    id, name, review,
+  };
+  const response = await AaRestoDbSource.addReview(data);
+  processReviewResponse(response);
+}
+
+function setupReviewEvent(id) {
+  const submitReview = document.querySelector('#submit-review');
+  submitReview.addEventListener('click', () => {
+    submitTheReview(id);
+  });
 }
 
 const Detail = {
@@ -34,7 +62,7 @@ const Detail = {
       },
     });
 
-    setupReviewEvent();
+    setupReviewEvent(url.id);
   },
 
 };
