@@ -15,6 +15,7 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const resto = await AaRestoDbSource.resto(url.id);
+    console.log(resto);
     const restoContainer = document.querySelector('#resto-detail');
     const stars = StarsCounter.count(resto.rating);
     restoContainer.innerHTML = createRestoDetailTemplate(resto, stars);
