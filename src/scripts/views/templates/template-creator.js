@@ -4,10 +4,22 @@ const createRestoCategoryItemTemplate = (category) => `
     <span class="resto-tag">${category.name}</span>
 `;
 
+const createRestoMenuItemTemplate = (menu) => `
+    <p>${menu.name}</p>
+`;
+
 function createRestoCategoriesTemplate(categories) {
   let template = '';
   categories.forEach((category) => {
     template += createRestoCategoryItemTemplate(category);
+  });
+  return template;
+}
+
+function createRestoMenusTemplate(menus) {
+  let template = '';
+  menus.forEach((menu) => {
+    template += createRestoMenuItemTemplate(menu);
   });
   return template;
 }
@@ -50,11 +62,19 @@ const createRestoDetailTemplate = (resto, stars) => `
       </div>
     </article>
 
-    <article class="resto flex-row items-end mt-1">
-      
+    <article class="resto flex-row center mt-1">
       <div class="resto-content flex-1 mr-2">
-        <div class="flex-col content-end">
+        <div class="flex-col center">
           <h1 class="resto-title">Menu</h1>
+          <h3 class="resto-sub-title">Foods</h3>
+          <div class="menu flex-col center">${createRestoMenusTemplate(resto.menus.foods)}</div>
+        </div>
+      </div>
+      <div class="resto-content flex-1 mr-2">
+        <div class="flex-col center">
+          <h1 class="resto-title">Menu</h1>
+          <h3 class="resto-sub-title">Drinks</h3>
+          <div class="menu flex-col center">${createRestoMenusTemplate(resto.menus.drinks)}</div>
         </div>
       </div>
     </article>

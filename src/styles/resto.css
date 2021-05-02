@@ -199,6 +199,11 @@ section {
   font-size: clamp(1.1em, 1.4vw, 1.4em);
 }
 
+.resto-sub-title {
+  margin: 0;
+  font-size: clamp(1em, 1.2vw, 1.2em);
+}
+
 .resto-desc {
   display: flex;
   flex-wrap: wrap;
@@ -389,6 +394,10 @@ button,
 a {
   min-width: 44px;
   min-height: 44px;
+}
+
+ol {
+  padding-left: 18px;
 }
 
 /* Tablet menu */
