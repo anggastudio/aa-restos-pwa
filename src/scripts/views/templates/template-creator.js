@@ -138,24 +138,20 @@ const createRestoItemTemplate = (resto, stars) => `
 
             <p class="resto-desc">${resto.description}</p>
 
-            <div id="favorite-button-container-${resto.id}">
-              
-            </div>
-
         </div>
     </article>
     </div>
   `;
 
-const createLikeButtonTemplate = () => `
-  <button aria-label="favorite this restaurant" id="favorite-button" class="resto-save" type="button">
+const createFavoriteButtonTemplate = (id) => `
+  <button aria-label="favorite this restaurant" id="favorite-button-${id}" class="resto-save" type="button">
     <i class="fa fa-heart-o mr-1" aria-hidden="true"></i>
       Save to Favorite
   </button>
 `;
 
-const createLikedButtonTemplate = () => `
-  <button aria-label="unfavorite this restaurant" id="favorite-button" class="resto-save" type="button">
+const createFavoritedButtonTemplate = (id) => `
+  <button aria-label="unfavorite this restaurant" id="favorite-button-${id}" class="resto-save" type="button">
     <i class="fa fa-heart mr-1" aria-hidden="true"></i>
       Favorited
   </button>
@@ -164,6 +160,6 @@ const createLikedButtonTemplate = () => `
 export {
   createRestoItemTemplate,
   createRestoDetailTemplate,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
+  createFavoriteButtonTemplate,
+  createFavoritedButtonTemplate,
 };

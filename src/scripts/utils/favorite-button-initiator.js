@@ -1,11 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 import FavoriteRestoIdb from '../data/favoriteresto-idb';
-import { createLikeButtonTemplate, createLikedButtonTemplate } from '../views/templates/template-creator';
+import { createFavoriteButtonTemplate, createFavoritedButtonTemplate } from '../views/templates/template-creator';
 
-const LikeButtonInitiator = {
+const FavoriteButtonInitiator = {
 
-  async init({ likeButtonContainer, resto }) {
-    this._likeButtonContainer = likeButtonContainer;
+  async init({ favButtonContainer, resto }) {
+    this._favButtonContainer = favButtonContainer;
     this._resto = resto;
 
     await this._renderButton();
@@ -15,9 +15,9 @@ const LikeButtonInitiator = {
     const { id } = this._resto;
 
     if (await this._isRestoExist(id)) {
-      this._renderLiked();
+      this._renderFavorited();
     } else {
-      this._renderLike();
+      this._renderFavorite();
     }
   },
 
@@ -26,21 +26,21 @@ const LikeButtonInitiator = {
     return !!resto;
   },
 
-  _renderLike() {
-    this._likeButtonContainer.innerHTML = createLikeButtonTemplate();
+  _renderFavorite() {
+    this._favButtonContainer.innerHTML = createFavoriteButtonTemplate(this._resto.id);
 
-    const likeButton = document.querySelector('#favorite-button');
-    likeButton.addEventListener('click', async () => {
+    const favButton = document.querySelector(`#favorite-button-${this._resto.id}`);
+    favButton.addEventListener('click', async () => {
       await FavoriteRestoIdb.putResto(this._resto);
       this._renderButton();
     });
   },
 
-  _renderLiked() {
-    this._likeButtonContainer.innerHTML = createLikedButtonTemplate();
+  _renderFavorited() {
+    this._favButtonContainer.innerHTML = createFavoritedButtonTemplate(this._resto.id);
 
-    const likeButton = document.querySelector('#favorite-button');
-    likeButton.addEventListener('click', async () => {
+    const favButton = document.querySelector(`#favorite-button-${this._resto.id}`);
+    favButton.addEventListener('click', async () => {
       await FavoriteRestoIdb.deleteResto(this._resto.id);
       this._renderButton();
     });
@@ -48,4 +48,4 @@ const LikeButtonInitiator = {
 
 };
 
-export default LikeButtonInitiator;
+export default FavoriteButtonInitiator;

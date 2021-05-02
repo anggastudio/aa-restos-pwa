@@ -19,7 +19,7 @@ const Detail = {
     restoContainer.innerHTML = createRestoDetailTemplate(resto, stars);
 
     FavoriteButtonInitiator.init({
-      likeButtonContainer: document.querySelector('#favorite-button-container'),
+      favButtonContainer: document.querySelector('#favorite-button-container'),
       resto: {
         id: resto.id,
         pictureId: resto.pictureId,

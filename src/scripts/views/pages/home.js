@@ -1,7 +1,6 @@
 import AaRestoDbSource from '../../data/aarestosdb-source';
 import { createRestoItemTemplate } from '../templates/template-creator';
 import StarsCounter from '../../utils/stars-counter';
-import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
 
 const Home = {
   async render() {
@@ -26,20 +25,6 @@ const Home = {
     restos.forEach((resto) => {
       const stars = StarsCounter.count(resto.rating);
       restosContainer.innerHTML += createRestoItemTemplate(resto, stars);
-    });
-    restos.forEach((resto) => {
-      const containerId = `#favorite-button-container-${resto.id}`;
-      FavoriteButtonInitiator.init({
-        likeButtonContainer: document.querySelector(containerId),
-        resto: {
-          id: resto.id,
-          pictureId: resto.pictureId,
-          name: resto.name,
-          city: resto.city,
-          rating: resto.rating,
-          description: resto.description,
-        },
-      });
     });
   },
 };
