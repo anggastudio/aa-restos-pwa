@@ -4,6 +4,10 @@ import { createRestoDetailTemplate } from '../templates/template-creator';
 import StarsCounter from '../../utils/stars-counter';
 import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
 
+function setupReviewEvent() {
+  console.log('');
+}
+
 const Detail = {
   async render() {
     return `
@@ -29,7 +33,10 @@ const Detail = {
         description: resto.description,
       },
     });
+
+    setupReviewEvent();
   },
+
 };
 
 export default Detail;

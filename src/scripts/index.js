@@ -4,6 +4,7 @@ import '../styles/style.css';
 import '../styles/resto.css';
 import '../styles/responsive.css';
 import '../styles/menu.css';
+import '../styles/review-form.css';
 import App from './views/app';
 import swRegister from './utils/sw-register';
 
