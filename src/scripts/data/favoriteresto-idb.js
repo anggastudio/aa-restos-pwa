@@ -16,8 +16,8 @@ const FavoriteRestoIdb = {
   async getRestos() {
     return (await dbPromise).getAll(OBJECT_STORE_NAME);
   },
-  async putResto(movie) {
-    return (await dbPromise).put(OBJECT_STORE_NAME, movie);
+  async putResto(resto) {
+    return (await dbPromise).put(OBJECT_STORE_NAME, resto);
   },
   async deleteResto(id) {
     return (await dbPromise).delete(OBJECT_STORE_NAME, id);

@@ -103,12 +103,7 @@ const createRestoDetailTemplate = (resto, stars) => `
               <span class="resto-rating-text">(${resto.rating})</span>
           </p>
 
-          <button class="resto-save mt-1" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-                  <path d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z" fill="currentColor" />
-              </svg>
-              Save to Favorite
-          </button>
+          <div id="favorite-button-container"></div>
         </div>
           
       </div>
@@ -143,12 +138,9 @@ const createRestoItemTemplate = (resto, stars) => `
 
             <p class="resto-desc">${resto.description}</p>
 
-            <button class="resto-save" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
-                    <path d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z" fill="currentColor" />
-                </svg>
-                Save to Favorite
-            </button>
+            <div id="favorite-button-container-${resto.id}">
+              
+            </div>
 
         </div>
     </article>
@@ -156,14 +148,16 @@ const createRestoItemTemplate = (resto, stars) => `
   `;
 
 const createLikeButtonTemplate = () => `
-  <button aria-label="like this movie" id="likeButton" class="like">
-     <i class="fa fa-heart-o" aria-hidden="true"></i>
+  <button aria-label="favorite this restaurant" id="favorite-button" class="resto-save" type="button">
+    <i class="fa fa-heart-o mr-1" aria-hidden="true"></i>
+      Save to Favorite
   </button>
 `;
 
 const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
-    <i class="fa fa-heart" aria-hidden="true"></i>
+  <button aria-label="unfavorite this restaurant" id="favorite-button" class="resto-save" type="button">
+    <i class="fa fa-heart mr-1" aria-hidden="true"></i>
+      Favorited
   </button>
 `;
 
