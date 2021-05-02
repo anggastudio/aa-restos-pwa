@@ -387,7 +387,7 @@ footer p {
 }
 
 .mr-2 {
-  margin-right: 2rem;
+  margin-right: 0;
 }
 
 button,
@@ -396,8 +396,31 @@ a {
   min-height: 44px;
 }
 
-ol {
-  padding-left: 18px;
+.review-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem;
+}
+
+.review-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 16px 32px;
+  border-radius: 8px;
+  border: 2px solid #f2f2f2;
+}
+
+.avatar {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 2px solid #f2f2f2;
+  color: #0080ff;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* Tablet menu */
@@ -462,6 +485,17 @@ ol {
   .content-end {
     justify-content: center;
     align-items: flex-end;
+  }
+  .mr-2 {
+    margin-right: 2rem;
+  }
+  .avatar {
+    padding: 16px 24px;
+    border-radius: 999px;
+    border: 2px solid #f2f2f2;
+    color: #0080ff;
+    font-size: 26px;
+    font-weight: bold;
   }
 }
 

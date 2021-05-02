@@ -24,13 +24,68 @@ function createRestoMenusTemplate(menus) {
   return template;
 }
 
+const createMenusTemplate = (menus) => `
+  <div class="flex-row m-1">
+      <h1 class="resto-title mt-1">Menus</h1>
+    </div>
+  <div class="flex-row">
+
+    <article class="resto flex-1 m-1">
+      <div class="resto-content">
+        <div class="flex-col center">
+          <h3 class="resto-sub-title">Foods</h3>
+          <div class="menu flex-col center">${createRestoMenusTemplate(menus.foods)}</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="resto flex-1 m-1">
+      <div class="resto-content">
+        <div class="flex-col center">
+          
+          <h3 class="resto-sub-title">Drinks</h3>
+          <div class="menu flex-col center">${createRestoMenusTemplate(menus.drinks)}</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+`;
+
+const createReviewItemTemplate = (review) => `
+  <div class="review-container">
+    <div class="avatar m-1">${review.name[0].toUpperCase()}</div>
+    <article class="review-content mr-2">
+      <h3 class="resto-sub-title">"${review.review}"</h3>
+      <p>- ${review.name} <span>pada ${review.date}</span</p>
+    </article>
+  </div>
+`;
+
+function createReviewTemplate(reviews) {
+  let templateItem = '';
+  reviews.forEach((review) => {
+    templateItem += createReviewItemTemplate(review);
+  });
+  return `
+    <div class="m-1">
+      <h1 class="resto-title mt-1">Customer Reviews</h1>
+    </div>
+    <div class="flex-row">
+      ${templateItem}
+    </div>
+  `;
+}
+
 const createRestoDetailTemplate = (resto, stars) => `
   <div class="flex-1">
     <img class="w-full cover" src="${CONFIG.BASE_IMAGE_URL_LARGE}${resto.pictureId}" alt="${resto.name}">
   </div>
   <div class="container">
-    <article class="resto flex-row items-end mt-1">
-      
+    <div class="flex-row m-1">
+      <h1 class="resto-title">Overview</h1>
+    </div>
+    <article class="resto flex-row items-end m-1">
       <div class="resto-content flex-1 mr-2">
         <div class="flex-col content-end">
           <h1 class="resto-title"><a href="#/detail/${resto.id}">${resto.name}</a></h1>
@@ -62,22 +117,8 @@ const createRestoDetailTemplate = (resto, stars) => `
       </div>
     </article>
 
-    <article class="resto flex-row center mt-1">
-      <div class="resto-content flex-1 mr-2">
-        <div class="flex-col center">
-          <h1 class="resto-title">Menu</h1>
-          <h3 class="resto-sub-title">Foods</h3>
-          <div class="menu flex-col center">${createRestoMenusTemplate(resto.menus.foods)}</div>
-        </div>
-      </div>
-      <div class="resto-content flex-1 mr-2">
-        <div class="flex-col center">
-          <h1 class="resto-title">Menu</h1>
-          <h3 class="resto-sub-title">Drinks</h3>
-          <div class="menu flex-col center">${createRestoMenusTemplate(resto.menus.drinks)}</div>
-        </div>
-      </div>
-    </article>
+    ${createMenusTemplate(resto.menus)}
+    ${createReviewTemplate(resto.customerReviews)}
     
   </div>
 `;
