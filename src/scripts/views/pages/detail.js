@@ -22,6 +22,8 @@ async function submitTheReview(id) {
   const inputReview = document.querySelector('#review-content');
   const name = inputName.value;
   const review = inputReview.value;
+  inputName.value = '';
+  inputReview.value = '';
   const data = {
     id, name, review,
   };

@@ -6,7 +6,7 @@
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src"
   },
   "author": "aaangga",
   "license": "ISC",
