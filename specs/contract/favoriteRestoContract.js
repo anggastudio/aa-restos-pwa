@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 const itActsAsFavoriteRestoModel = (favoriteResto) => {
   it('should return the resto that has been added', async () => {
     favoriteResto.putResto({ id: 1 });
@@ -15,7 +14,7 @@ const itActsAsFavoriteRestoModel = (favoriteResto) => {
   it('should refuse a Resto from being added if it does not have the correct property', async () => {
     favoriteResto.putResto({ aProperty: 'property' });
 
-    expect(await favoriteResto.getAllRestos())
+    expect(await favoriteResto.getRestos())
       .toEqual([]);
   });
 
@@ -23,7 +22,7 @@ const itActsAsFavoriteRestoModel = (favoriteResto) => {
     favoriteResto.putResto({ id: 1 });
     favoriteResto.putResto({ id: 2 });
 
-    expect(await favoriteResto.getAllRestos())
+    expect(await favoriteResto.getRestos())
       .toEqual([
         { id: 1 },
         { id: 2 },
@@ -37,7 +36,7 @@ const itActsAsFavoriteRestoModel = (favoriteResto) => {
 
     await favoriteResto.deleteResto(1);
 
-    expect(await favoriteResto.getAllRestos())
+    expect(await favoriteResto.getRestos())
       .toEqual([
         { id: 2 },
         { id: 3 },
@@ -51,25 +50,12 @@ const itActsAsFavoriteRestoModel = (favoriteResto) => {
 
     await favoriteResto.deleteResto(4);
 
-    expect(await favoriteResto.getAllRestos())
+    expect(await favoriteResto.getRestos())
       .toEqual([
         { id: 1 },
         { id: 2 },
         { id: 3 },
       ]);
-  });
-
-  it('should be able to search for Restos', async () => {
-    favoriteResto.putResto({ id: 1, title: 'resto a' });
-    favoriteResto.putResto({ id: 2, title: 'resto b' });
-    favoriteResto.putResto({ id: 3, title: 'resto abc' });
-    favoriteResto.putResto({ id: 4, title: 'ini mah resto abcd' });
-
-    expect(await favoriteResto.searchRestos('resto a')).toEqual([
-      { id: 1, title: 'resto a' },
-      { id: 3, title: 'resto abc' },
-      { id: 4, title: 'ini mah resto abcd' },
-    ]);
   });
 };
 

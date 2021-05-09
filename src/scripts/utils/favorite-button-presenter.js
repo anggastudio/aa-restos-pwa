@@ -27,8 +27,12 @@ const FavoriteButtonPresenter = {
   },
 
   _renderFavorite() {
-    this._favButtonContainer.innerHTML = createFavoriteButtonTemplate(this._resto.id);
+    const { id } = this._resto;
+    this._favButtonContainer.innerHTML = createFavoriteButtonTemplate(id);
 
+    if (id == null || id === undefined || id.isNaN) {
+      return;
+    }
     const favButton = document.querySelector(`#favorite-button-${this._resto.id}`);
     favButton.addEventListener('click', async () => {
       await this._favoriteRestos.putResto(this._resto);
