@@ -34,7 +34,6 @@ Scenario('favorite one resto', async ({ I }) => {
 });
 
 Scenario('unfavorite favorited resto', async ({ I }) => {
-  I.amOnPage('/#/favorites');
   I.see('Oops, there is no favorite Resto yet', 'p');
 
   I.amOnPage('/');
