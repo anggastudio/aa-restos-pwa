@@ -2,12 +2,12 @@ import FavoriteRestos from '../src/scripts/data/favoriteresto-idb';
 import * as TestFactories from './helpers/testFactories';
 
 describe('Favorite A Resto', () => {
-  const addLikeButtonContainer = () => {
+  const addFavButtonContainer = () => {
     document.body.innerHTML = '<div id="favorite-button-container"></div>';
   };
 
   beforeEach(() => {
-    addLikeButtonContainer();
+    addFavButtonContainer();
   });
 
   it('should show the favorite button when the resto has not been favorited before', async () => {
