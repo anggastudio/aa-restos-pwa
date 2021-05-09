@@ -155,7 +155,8 @@ section {
 }
 
 .image-box {
-  flex: 100%;
+  flex: 1;
+  width: 100%;
   height: calc(282px + 5vw);
   overflow: hidden;
 }

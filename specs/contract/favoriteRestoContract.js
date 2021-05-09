@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 const itActsAsFavoriteRestoModel = (favoriteResto) => {
   it('should return the resto that has been added', async () => {
     favoriteResto.putResto({ id: 1 });
