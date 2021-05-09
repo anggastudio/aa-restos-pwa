@@ -65,7 +65,9 @@ const createReviewItemTemplate = (review) => `
 function createReviewTemplate(reviews) {
   let templateItem = '';
   reviews.forEach((review) => {
-    templateItem += createReviewItemTemplate(review);
+    if (review != null && review.name != null && review.name.length > 1) {
+      templateItem += createReviewItemTemplate(review);
+    }
   });
   return `
     <div class="m-1">
@@ -92,8 +94,11 @@ function createReviewTemplate(reviews) {
 }
 
 const createRestoDetailTemplate = (resto, stars) => `
-  <div class="flex-1">
-    <img class="w-full cover" crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL_LARGE}${resto.pictureId}" alt="${resto.name}">
+  <div class="jumbotron">
+      <img class="w-full cover" crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL_LARGE}${resto.pictureId}" alt="${resto.name}">
+      <div class="jumbotron-title">
+          <h1>${resto.name}</h1>
+      </div>
   </div>
   <div class="container">
     <div class="flex-row m-1">
@@ -131,6 +136,10 @@ const createRestoDetailTemplate = (resto, stars) => `
     
   </div>
 `;
+
+const createEmptyRestoItemTemplate = () => `
+    <div class="h-10 w-full m-1"><p>Oops, there is no favorite Resto yet</p></div>
+  `;
 
 const createRestoItemTemplate = (resto, stars) => `
     <div class="card" id="resto-${resto.id}">
@@ -177,4 +186,5 @@ export {
   createFavoriteButtonTemplate,
   createFavoritedButtonTemplate,
   createReviewItemTemplate,
+  createEmptyRestoItemTemplate,
 };

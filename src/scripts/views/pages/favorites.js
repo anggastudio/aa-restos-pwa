@@ -1,5 +1,5 @@
 import FavoriteRestoIdb from '../../data/favoriteresto-idb';
-import { createRestoItemTemplate } from '../templates/template-creator';
+import { createRestoItemTemplate, createEmptyRestoItemTemplate } from '../templates/template-creator';
 import StarsCounter from '../../utils/stars-counter';
 
 const Favorites = {
@@ -22,10 +22,14 @@ const Favorites = {
   async afterRender() {
     const restos = await FavoriteRestoIdb.getRestos();
     const restosContainer = document.querySelector('#restos');
-    restos.forEach((resto) => {
-      const stars = StarsCounter.count(resto.rating);
-      restosContainer.innerHTML += createRestoItemTemplate(resto, stars);
-    });
+    if (restos.length === 0) {
+      restosContainer.innerHTML = createEmptyRestoItemTemplate();
+    } else {
+      restos.forEach((resto) => {
+        const stars = StarsCounter.count(resto.rating);
+        restosContainer.innerHTML += createRestoItemTemplate(resto, stars);
+      });
+    }
   },
 };
 
