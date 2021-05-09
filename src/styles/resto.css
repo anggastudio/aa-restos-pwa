@@ -207,7 +207,7 @@ section {
 .resto-desc {
   display: flex;
   flex-wrap: wrap;
-  margin: 14px 0px;
+  margin: 14px 0;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
