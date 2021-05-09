@@ -1,12 +1,13 @@
 {
   "name": "movie-catalogue",
   "version": "1.0.0",
-  "description": "",
+  "description": "web project to display restaurants",
   "main": "index.js",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "karma start"
   },
   "author": "aaangga",
   "license": "ISC",
@@ -19,7 +20,17 @@
     "eslint": "^7.25.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jasmine": "^4.1.1",
     "html-webpack-plugin": "^4.3.0",
+    "jasmine-ajax": "^4.0.0",
+    "jasmine-core": "^3.5.0",
+    "karma": "^5.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-eslint": "^2.2.0",
+    "karma-firefox-launcher": "^1.3.0",
+    "karma-jasmine": "^3.3.1",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^4.0.2",
     "style-loader": "^2.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
@@ -28,6 +39,7 @@
   },
   "dependencies": {
     "idb": "^6.0.0",
+    "regenerator-runtime": "^0.13.5",
     "serviceworker-webpack-plugin": "^1.0.1"
   }
 }

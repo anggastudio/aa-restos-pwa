@@ -2,7 +2,8 @@ import UrlParser from '../../routes/url-parser';
 import AaRestoDbSource from '../../data/aarestosdb-source';
 import { createRestoDetailTemplate, createReviewItemTemplate } from '../templates/template-creator';
 import StarsCounter from '../../utils/stars-counter';
-import FavoriteButtonInitiator from '../../utils/favorite-button-initiator';
+import FavoriteButtonPresenter from '../../utils/favorite-button-presenter';
+import FavoriteRestoIdb from '../../data/favoriteresto-idb';
 
 function processReviewResponse(response) {
   if (response && response.customerReviews) {
@@ -52,8 +53,9 @@ const Detail = {
     const stars = StarsCounter.count(resto.rating);
     restoContainer.innerHTML = createRestoDetailTemplate(resto, stars);
 
-    FavoriteButtonInitiator.init({
+    FavoriteButtonPresenter.init({
       favButtonContainer: document.querySelector('#favorite-button-container'),
+      favoriteRestos: FavoriteRestoIdb,
       resto: {
         id: resto.id,
         pictureId: resto.pictureId,
