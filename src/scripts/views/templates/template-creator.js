@@ -95,7 +95,7 @@ function createReviewTemplate(reviews) {
 
 const createRestoDetailTemplate = (resto, stars) => `
   <div class="jumbotron">
-      <img class="w-full cover" crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL_LARGE}${resto.pictureId}" alt="${resto.name}">
+      <img class="w-full cover lazyload" crossorigin="anonymous" data-src="${CONFIG.BASE_IMAGE_URL_LARGE}${resto.pictureId}" alt="${resto.name}">
       <div class="jumbotron-title">
           <h1>${resto.name}</h1>
       </div>
@@ -145,7 +145,7 @@ const createRestoItemTemplate = (resto, stars) => `
     <div class="card" id="resto-${resto.id}">
     <article class="resto">
         <div class="image-box">
-          <img class="w-full" crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL}${resto.pictureId}" alt="${resto.name}">
+          <img class="w-full lazyload" crossorigin="anonymous" data-src="${CONFIG.BASE_IMAGE_URL}${resto.pictureId}" alt="${resto.name}">
         </div>
         <div class="resto-content">
             <p class="resto-tags">

@@ -6,7 +6,12 @@ const Favorites = {
   async render() {
     return `
       <header class="jumbotron">
-          <img src="./heros/hero-image_4.jpg" alt="Jumbotron image - Almond Meatball">
+          <picture>
+            <source media="(max-width: 600px)" srcset="./heros/hero-image_4-small.jpg">
+            <img class="lazyload"
+                data-src='./heros/hero-image_4-large.jpg' 
+                alt="Jumbotron image - Almond Meatball" />
+          </picture>
           <div class="jumbotron-title">
               <h1>Your Favorite Restaurants</h1>
           </div>
