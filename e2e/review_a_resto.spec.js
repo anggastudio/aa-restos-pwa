@@ -13,7 +13,7 @@ Before(({ I }) => {
 });
 
 Scenario('review a restos', async ({ I }) => {
-  const reviewText = 'Review ini berasal dari E2E testing. Ngeeeriih...(2)';
+  const reviewText = 'Review ini berasal dari E2E testing. Ngeeeriih...(11)';
   I.seeElement('#review-name');
   I.appendField('#review-name', 'Angga Pratama');
   I.seeElement('#review-content');
